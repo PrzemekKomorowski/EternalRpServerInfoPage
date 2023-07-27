@@ -1,5 +1,5 @@
 export const PostList = () => {
     return (
-        <div>PostList</div>
+        <div>POSTLIST</div>
     )
 }
