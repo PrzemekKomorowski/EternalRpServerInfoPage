@@ -11,6 +11,7 @@ import {
 } from "./Navbar.styles";
 import {useNavigate} from "react-router-dom";
 import {LoginContext} from "../../context/LoginContext";
+import {AuthApi} from "../../api/AuthApi";
 
 
 export const Navbar = () => {
@@ -19,8 +20,17 @@ export const Navbar = () => {
     const navigate = useNavigate()
     const {showLogin,loginModifier} = useContext(LoginContext)
     const onLoginClicked = useCallback(async ()=>{
-        console.log(userName);
-        console.log(userPassword);
+        try {
+            const userResponse = await AuthApi.signIn(
+                {
+                    userName:userName,
+                    password:userPassword
+                }
+            )
+            console.log(userResponse.data)
+        }catch (error){
+            console.log(error)
+        }
     },[userName,userPassword])
     return (
         <>

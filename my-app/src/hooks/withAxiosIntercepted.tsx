@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import axios, {AxiosRequestConfig, InternalAxiosRequestConfig} from "axios";
+import axios, {InternalAxiosRequestConfig} from "axios";
 import {ACCESS_TOKEN} from "../constans/constans";
 
 
@@ -10,7 +9,6 @@ export function withAxiosIntercepted<T extends JSX.IntrinsicAttributes>(
   Component: React.ComponentType<T>
 ) {
   return function AxiosIntercepted(props: T) {
-    const navigate = useNavigate();
     const [isInitialized, setIsInitialized] = useState<boolean>(false);
 
     useEffect(() => {
@@ -45,7 +43,7 @@ export function withAxiosIntercepted<T extends JSX.IntrinsicAttributes>(
       );
 
       setIsInitialized(true);
-    }, [navigate]);
+    }, []);
 
     return isInitialized ? <Component {...props} /> : <></>;
   };
