@@ -39,3 +39,15 @@ export const LogginWrapper = styled.div`
   backdrop-filter: blur(20px);
   
 `
+
+export const StyledTextFieldMedium = styled.input`
+  width: 30%;
+  height: 5%;
+`
+
+export const StyledLoginButton = styled.button`
+  width: 15%;
+  height: 3%;
+  color:black;
+  background-color: purple;
+`

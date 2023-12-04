@@ -6,9 +6,7 @@ export const HomePage = () => {
 
     return (
         <HomePageBody>
-            <div>
-                <WelcomeText/>
-            </div>
+            <WelcomeText/>
         </HomePageBody>
     )
 }

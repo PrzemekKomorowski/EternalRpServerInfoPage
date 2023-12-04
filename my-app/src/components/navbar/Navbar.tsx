@@ -1,12 +1,27 @@
-import React, {useContext, useEffect, useState} from "react";
-import{Wrapper,LoginButton,ImgLogo,Link,PageTitle,LogginWrapper} from "./Navbar.styles";
+import React, {useCallback, useContext, useEffect, useState} from "react";
+import {
+    Wrapper,
+    LoginButton,
+    ImgLogo,
+    Link,
+    PageTitle,
+    LogginWrapper,
+    StyledTextFieldMedium,
+    StyledLoginButton
+} from "./Navbar.styles";
 import {useNavigate} from "react-router-dom";
 import {LoginContext} from "../../context/LoginContext";
 
 
 export const Navbar = () => {
+    const [userPassword,setUserPassword] = useState("")
+    const [userName,setUserName] = useState("");
     const navigate = useNavigate()
     const {showLogin,loginModifier} = useContext(LoginContext)
+    const onLoginClicked = useCallback(async ()=>{
+        console.log(userName);
+        console.log(userPassword);
+    },[userName,userPassword])
     return (
         <>
             <Wrapper>
@@ -21,6 +36,13 @@ export const Navbar = () => {
             </Wrapper>
             {showLogin && (
                 <LogginWrapper>
+                    <>
+                        <StyledTextFieldMedium onChange={(event)=>setUserName(event.target.value)}/>
+                        <StyledTextFieldMedium onChange={(event)=>setUserPassword(event.target.value)}/>
+                    </>
+                    <StyledLoginButton onClick={onLoginClicked}>
+                        Logowanie
+                    </StyledLoginButton>
 
                 </LogginWrapper>
             )

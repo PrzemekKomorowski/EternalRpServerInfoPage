@@ -1,27 +1,31 @@
 import styled from "styled-components";
 
 export const FullDivinity = styled.div`
-  display: flex;
+  display: grid;
   position: absolute;
   margin-left:25%;
   margin-top:5%;
   width: 50%;
-  height: 75%;
-  border: 1px solid red;
-`
-export const LeftDiv = styled.div`
-  border: 2px solid black;
-  width:50%;
-  margin: 1%;
+  min-width: fit-content;
+  height: 100%;
+  min-height: fit-content;
+  border: 1px solid white;
+  border-radius: 14px;
+  backdrop-filter: blur(3px);
   text-align: center;
-  color:white;
-  
+  color: white;
 `
 
-export const RightDiv = styled.div`
-  border: 2px solid black;
-  width:50%;
-  margin: 1%;
-  text-align: center;
+
+
+export const InfoTextp = styled.p`
+  border: red 1px solid;
   color:white;
+  padding: 0;
+  margin: 0;
+`
+
+export const InfoTexth3 = styled.h3`
+  color:white;
+  
 `
