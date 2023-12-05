@@ -7,7 +7,9 @@ import {
     PageTitle,
     LogginWrapper,
     StyledTextFieldMedium,
-    StyledLoginButton
+    StyledLoginButton,
+    RegisterWrapper,
+    StyledSwitchButton
 } from "./Navbar.styles";
 import {useNavigate} from "react-router-dom";
 import {LoginContext} from "../../context/LoginContext";
@@ -18,10 +20,23 @@ export const Navbar = () => {
     const [userPassword,setUserPassword] = useState("")
     const [userName,setUserName] = useState("");
     const navigate = useNavigate()
-    const {showLogin,loginModifier} = useContext(LoginContext)
+    const {showLogin,loginModifier,showRegister,registerModifier} = useContext(LoginContext)
     const onLoginClicked = useCallback(async ()=>{
         try {
             const userResponse = await AuthApi.signIn(
+                {
+                    userName:userName,
+                    password:userPassword
+                }
+            )
+            console.log(userResponse.data)
+        }catch (error){
+            console.log(error)
+        }
+    },[userName,userPassword])
+    const onRegisterClicked = useCallback(async ()=>{
+        try {
+            const userResponse = await AuthApi.signUp(
                 {
                     userName:userName,
                     password:userPassword
@@ -44,6 +59,24 @@ export const Navbar = () => {
                 <Link onClick={()=>{navigate("/contact")}}>Contact Us</Link>
                 <LoginButton onClick={()=>{loginModifier(true)}}>Login</LoginButton>
             </Wrapper>
+            {showRegister && (
+                <RegisterWrapper>
+                    <>
+                        <label>Username:</label>
+                        <StyledTextFieldMedium onChange={(event)=>setUserName(event.target.value)}/>
+                        <label>Password:</label>
+                        <StyledTextFieldMedium onChange={(event)=>setUserPassword(event.target.value)}/>
+                        <StyledSwitchButton onClick={onRegisterClicked}>
+                            Zarejestruj się
+                        </StyledSwitchButton>
+                        <StyledLoginButton onClick={()=>{registerModifier(false);loginModifier(true) }}>
+                            Logowanie
+                        </StyledLoginButton>
+
+                    </>
+                </RegisterWrapper>
+            )
+            }
             {showLogin && (
                 <LogginWrapper>
                     <>
@@ -51,8 +84,12 @@ export const Navbar = () => {
                         <StyledTextFieldMedium onChange={(event)=>setUserPassword(event.target.value)}/>
                     </>
                     <StyledLoginButton onClick={onLoginClicked}>
-                        Logowanie
+                        Zaloguj się
                     </StyledLoginButton>
+                    <StyledSwitchButton onClick={()=>{registerModifier(true);loginModifier(false) }}>
+                        Rejestracja
+                    </StyledSwitchButton>
+
 
                 </LogginWrapper>
             )

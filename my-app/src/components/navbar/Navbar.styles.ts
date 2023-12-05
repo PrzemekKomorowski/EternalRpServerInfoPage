@@ -47,7 +47,31 @@ export const StyledTextFieldMedium = styled.input`
 
 export const StyledLoginButton = styled.button`
   width: 15%;
-  height: 3%;
+  height: 5%;
   color:black;
   background-color: purple;
+`
+
+
+
+export const StyledSwitchButton = styled.button`
+  width: 15%;
+  height: 5%;
+  color:black;
+  background-color: lightcoral;
+`
+
+
+export const RegisterWrapper = styled.div`
+      display: flex;
+      position: absolute;
+      top:20%;
+      left: 37.5%;
+      width:25%;
+      height:60%;
+      border:2px solid lightcoral;
+      border-radius:20px;
+      background:transparent;
+      z-index:999;
+      backdrop-filter: blur(20px);
 `

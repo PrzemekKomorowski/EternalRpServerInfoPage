@@ -12,7 +12,7 @@ export const LoginContextProvider = ({children}:React.PropsWithChildren) => {
         setShowLogin(show)
     }
     return(
-        <LoginContext.Provider value={{showLogin,loginModifier}}>
+        <LoginContext.Provider value={{showLogin,loginModifier,showRegister,registerModifier}}>
             {children}
         </LoginContext.Provider>
     )
