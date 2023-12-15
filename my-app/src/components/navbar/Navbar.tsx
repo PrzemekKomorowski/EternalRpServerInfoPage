@@ -21,7 +21,8 @@ export const Navbar = () => {
     const [userPassword,setUserPassword] = useState("")
     const [userName,setUserName] = useState("");
     const navigate = useNavigate()
-    const {showLogin,loginModifier,showRegister,registerModifier} = useContext(LoginContext)
+    // @ts-ignore
+    const {showLogin,loginModifier,registerModifier,showRegister} = useContext(LoginContext)
     const onLoginClicked = useCallback(async ()=>{
         try {
             const userResponse = await AuthApi.signIn(
