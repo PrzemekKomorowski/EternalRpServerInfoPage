@@ -4,7 +4,7 @@ import {Outlet} from "react-router-dom";
 
 
 
-export const ElementContainter=() => {
+export const ElementContainer=() => {
     return(
         <>
             <Navbar/>
